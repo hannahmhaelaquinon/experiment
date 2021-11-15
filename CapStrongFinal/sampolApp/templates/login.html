@@ -1,26 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
-    <link rel="stylesheet" href="static/sampolApp/css/login.css">
+    <link rel="stylesheet" href="{% static 'sampolApp/css/login.css' %}">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <title>SAMPOL</title>
+  </head>
+
+{% block content %} 
 <body>
   <div class="container">
     <input type="checkbox" id="flip">
     <div class="cover">
       <div class="front">
-        <img src="static/sampolApp/assets/img/logo.jfif" alt="">
+        <img src="{% static 'sampolApp/images/cit.png' %}" alt="">
         <div class="text">
-          <span class="text-1">Every new friend is a <br> new adventure</span>
-          <span class="text-2">Let's get connected</span>
+          <span class="text-1">Today <br> is the opportunity <br> to build the <br>tomorrow <br>you want</span>
+          <span class="text-2">-Ken Poirot</span>
         </div>
       </div>
       <div class="back">
-        <img class="backImg" src="static/sampolApp/assets/img/logo.jfif" alt="">
+        <img class="backImg" src="{% static 'sampolApp//images/new.png' %}" alt="">
         <div class="text">
           <span class="text-1">Complete miles of journey <br> with one step</span>
           <span class="text-2">Let's get started</span>
@@ -51,29 +57,48 @@
       </div>
         <div class="signup-form">
           <div class="title">Signup</div>
-        <form action="#">
+          <form action="" method="POST">
+            {% csrf_token %}
+  
             <div class="input-boxes">
               <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" required>
+                <i class="fas fa-user" style="padding-left: 8px;"></i>
+                <input type="text" placeholder="Enter First Name" name="fname" required>
               </div>
+  
               <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <i class="fas fa-user" style="padding-left: 8px;"></i>
+                <input type="text" placeholder="Enter Last Name" name="lname" required>
               </div>
+  
               <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <i class="fas fa-envelope" style="padding-left: 8px;"></i>
+                <input type="text" placeholder="Enter your email" name="email" required>
               </div>
+  
+              <div class="input-box">
+                <i class="fas fa-user" style="padding-left: 8px;"></i>
+                <input type="text" placeholder="Enter UserName" name="uname" required>
+              </div>
+  
+              <div class="input-box">
+                <i class="fas fa-lock" style="padding-left: 8px;"></i>
+                <input type="password" placeholder="Enter your password" name="pass" required>
+              </div>
+  
               <div class="button input-box">
                 <input type="submit" value="Sumbit">
               </div>
-              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+  
+              <div class="text sign-up-text">
+                Already have an account? <label for="flip">Login now</label>
+              </div>
             </div>
-      </form>
+          </form>
     </div>
     </div>
     </div>
   </div>
 </body>
+{% endblock content %}
 </html>

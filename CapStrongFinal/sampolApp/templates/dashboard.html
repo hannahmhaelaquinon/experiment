@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,20 +15,20 @@
 <meta name="description" content="">
 <meta name="author" content="">	
 <!-- bootstrap css -->
-<link rel="stylesheet" type="text/css" href="static/sampolApp/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'sampolApp/css/bootstrap.min.css' %}">
 <!-- style css -->
-<link rel="stylesheet" type="text/css" href="static/sampolApp/css/style.css">
+<link rel="stylesheet" type="text/css" href="{% static 'sampolApp/css/style.css' %}">
 <!-- Responsive-->
-<link rel="stylesheet" href="static/sampolApp/css/responsive.css">
+<link rel="stylesheet" href="{% static 'sampolApp/css/responsive.css'%}">
 <!-- fevicon -->
 <link rel="icon" href="static/sampolApp/images/fevicon.png" type="image/gif" />
 <!-- Scrollbar Custom CSS -->
-<link rel="stylesheet" href="static/sampolApp/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="{% static 'sampolApp/css/jquery.mCustomScrollbar.min.css' %}">
 <!-- Tweaks for older IEs-->
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 <!-- owl stylesheets --> 
-<link rel="stylesheet" href="static/sampolApp/css/owl.carousel.min.css">
-<link rel="stylesheet" href="static/sampolApp/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="{% static 'sampolApp/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'sampolApp/css/owl.theme.default.min.css'%}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
 </head>
@@ -37,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
-                    <div class="logo"><a href="index.html"><img src="static/sampolApp/images/logo2.png"></a></div>
+                    <div class="logo"><a href="index.html"><img src="{% static 'sampolApp/images/logo2.png' %}"></a></div>
                 </div>
                 <div class="col-sm-6 col-lg-9">
                     <div class="menu_text">
@@ -45,20 +46,9 @@
                             <li><a href="/">Home</a></li>                                                    
                             <li><a href=" /dashboard" class="get-started-btn scrollto">Dashboard</a></li>
                             <li><a href="/login" class="get-started-btn scrollto">Log In</a></li>                     
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <!--div class="overlay-content">
-                  <a href="#index">Home</a>
-                  <a href="#taxi">Features</a>
-                  <a href="#booking">Abouts Us</a>
-                  <a href="contact">Contact Us</a>
-
-                </div-->
-                </div>
-                <!--span  style="font-size:33px;cursor:pointer; color: #ffffff;" onclick="openNav()"><img src="static/sampolApp/images/toggle-menu.png" class="toggle_menu"></span-->
-                </div>  
-                </li>
                         </ul>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -68,27 +58,46 @@
         <center>
             <p>
                 <h2>
-                    USERS
+                    REGISTER
                 </h2>
             </p>
         </center>
     </div>
     <div>
         <p align = "right">
-            <a>
-            add user
+            <a type = "button" class = "btn btn-primary" id = "student_id" 
+            href = "{% url 'sampolApp:registerView' %}">
+            add Register
             </a>
         </p>
     </div>
     <table style = 'text-align:center' class = "table table-primary table-striped">
         <thead>
         <tr>
-          <th class = "text-center">User ID</th>
-          <th class = "text-center">First Name</th>
-          <th class = "text-center">Last Name</th>
-          <th class = "text-center">Action</th>
+          <th class = "text-center">Full Name</th>
+          <th class = "text-center">Plate No.</th>
+          <th class = "text-center">Id No.</th>
+          <th class = "text-center">Val. Type</th>
+            <th class = "text-center">Action</th>
         </tr>
       </thead>
+      <tbody>
+            {% for r in register %}
+        <tr>
+          <td>{{r.sName}}</td>
+          <td>{{r.plate}}</td>
+          <td>{{r.id}}</td>
+          <td>{{r.vtype}}</td>
+          <td>
+            <a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#newModal-{{r.student_id}}">
+                VIEW
+            </a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.student_id}}">
+                DELETE
+            </button>
+        </tr>
+        {% endfor %}   
+       </tbody>
     </table>
  <!-- copyright section start -->
  
